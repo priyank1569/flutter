@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Dynamic Calculator',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Calculator(),
+    );
+  }
+}
+
+class Calculator extends StatefulWidget {
+  @override
+  _CalculatorState createState() => _CalculatorState();
+}
+
+class _CalculatorState extends State<Calculator> {
+  String _output = "0";
+  String _input = "";
+  String _operator = "";
+
+  void _buttonPressed(String buttonText) {
+    setState(() {
+      if (buttonText == "C") {
+        _input = "";
+        _output = "0";
+      } else if (buttonText == "=") {
+        _calculateResult();
+      } else {
+        _input += buttonText;
+        _output = _input;
+      }
+    });
+  }
+
+  void _calculateResult() {
+    try {
+      // Simple evaluation logic
+      List<String> parts = _input.split(RegExp(r'(\+|\-|\*|\/)'));
+      if (parts.length == 2) {
+        double num1 = double.parse(parts[0]);
+        double num2 = double.parse(parts[1]);
+        switch (_input[parts[0].length]) {
+          case '+':
+            _output = (num1 + num2).toString();
+            break;
+          case '-':
+            _output = (num1 - num2).toString();
+            break;
+          case '*':
+            _output = (num1 * num2).toString();
+            break;
+          case '/':
+            _output = (num1 / num2).toString();
+            break;
+        }
+      }
+    } catch (e) {
+      _output = "Error";
+    }
+    _input = "";
+  }
+
+  Widget _buildButton(String buttonText) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: () => _buttonPressed(buttonText),
+          child: Text(
+            buttonText,
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dynamic Calculator'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+            alignment: Alignment.centerRight,
+            child: Text(
+              _output,
+              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              _buildButton("7"),
+              _buildButton("8"),
+              _buildButton("9"),
+              _buildButton("/"),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _buildButton("4"),
+              _buildButton("5"),
+              _buildButton("6"),
+              _buildButton("*"),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _buildButton("1"),
+              _buildButton("2"),
+              _buildButton("3"),
+              _buildButton("-"),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _buildButton("C"),
+              _buildButton("0"),
+              _buildButton("="),
+              _buildButton("+"),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
