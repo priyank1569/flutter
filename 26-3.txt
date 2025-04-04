@@ -1,0 +1,116 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(  MaterialApp(
+    home: LstDemo(),
+  ));
+}
+
+class LstDemo extends StatelessWidget {
+    LstDemo({super.key});
+  List<String> lst = ["A","B","C","D"];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(),body: ListView.builder(itemCount: lst.length, itemBuilder: (context, index) {
+      return ListTile(onTap: () {
+        print("On tap: "+ index.toString());
+      }, title: Text(lst[index]),subtitle: Text("Vishal@gmail.com"),);
+    },),);
+  }
+}
+
+
+
+class DemoApp extends StatelessWidget {
+  const DemoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Vishal"),
+                leading: Icon(Icons.person),
+                trailing: Icon(Icons.call),
+                subtitle: Text("Vishal@gmail.com"),
+              ),
+            ),
+            ListTile(
+              title: Text("Vishal"),
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.call),
+              subtitle: Text("Vishal@gmail.com"),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Vishal"),
+                leading: Icon(Icons.person),
+                trailing: Icon(Icons.call),
+                subtitle: Text("Vishal@gmail.com"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

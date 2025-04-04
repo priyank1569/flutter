@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: MyApp2(),
+  ));
+}
+
+
+class MyApp2 extends StatelessWidget {
+  const MyApp2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(),body: ListView.builder(itemCount: 50, itemBuilder: (context, index) {
+      return ListTile(title: Text("Title" + index.toString()),subtitle: Text("Sub title"),);
+    },),);
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 100,
+                color: Colors.redAccent,
+              ),
+              Container(
+                height: 100,
+                color: Colors.blueAccent,
+              ),
+              Container(
+                height: 100,
+                color: Colors.redAccent,
+              ),
+              Container(
+                height: 100,
+                color: Colors.blueAccent,
+              ),
+              Container(
+                height: 100,
+                color: Colors.redAccent,
+              ),
+              Container(
+                height: 100,
+                color: Colors.blueAccent,
+              ),
+            ],
+          ),
+          scrollDirection: Axis.vertical),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("Go!"),
+      ),
+    );
+  }
+}
+
+class MyApp1 extends StatelessWidget {
+  const MyApp1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.greenAccent,
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("Vishal narvani"),
+              leading: Icon(Icons.account_circle),
+              subtitle: Text("GLS University"),
+            ),
+            ListTile(
+              title: Text("Vishal narvani"),
+              leading: Icon(Icons.account_circle),
+              subtitle: Text("GLS University"),
+            ),
+            Card(
+              child: ListTile(
+                tileColor: Colors.blueGrey,
+                title: Text("Vishal narvani"),
+                leading: Icon(Icons.account_circle),
+                subtitle: Text("GLS University"),
+              ),
+            ),
+            ListTile(
+              title: Text("Vishal narvani"),
+              leading: Icon(Icons.account_circle),
+              subtitle: Text("GLS University"),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Vishal narvani"),
+                leading: Icon(Icons.account_circle),
+                subtitle: Text("GLS University"),
+                trailing: Icon(Icons.delete),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
